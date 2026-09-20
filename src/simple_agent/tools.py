@@ -3,8 +3,7 @@
 
     Every raw paths the agent request will be rendered as virtual path under SANDBOX_ROOT
     
-    Four tools:
-    - internet_search
+    Three tools:
     - grep
     - list_dir
     - read_file
@@ -14,8 +13,6 @@ import subprocess
 
 from langchain_core.tools import tool
 from pathlib import Path, PurePosixPath
-
-internet_search = {"google_search": {}}
 
 SANDBOX_ROOT = (Path(__file__).resolve().parent.parent.parent / "notes").resolve()
 BLOCKED_NAMES = {

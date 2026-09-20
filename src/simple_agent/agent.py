@@ -1,10 +1,10 @@
 from langchain.chat_models import init_chat_model
 from langchain_core.rate_limiters import InMemoryRateLimiter
 from deepagents import create_deep_agent
-from .tools import internet_search, grep, list_dir, read_file
+from .tools import grep, list_dir, read_file
 
 # System prompt to steer the agent to trace symbols through the local file tree
-navigator_instructions = r"""You answer questions about a local file tree — most often "where is X defined and what calls it" — using only `list_dir`, `grep` and `read_file` on virtual paths rooted at `/`, the top of the tree; nothing exists above it, and `internet_search` cannot see it at all.
+navigator_instructions = r"""You answer questions about a local file tree — most often "where is X defined and what calls it" — using only `list_dir`, `grep` and `read_file` on virtual paths rooted at `/`, the top of the tree; nothing exists above it.
 
 Start with `list_dir("/")` to learn the tree's shape, then locate the definition by grepping for a definition *shape* rather than the bare name (`(def|class) +X\b` with `regexp=True`) and the callers by use shapes (`X *\(`, `\.X\b`, `(import|from).*X`).
 
