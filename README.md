@@ -9,7 +9,7 @@ simple-agent/
 ├── src/simple_agent/
 │   ├── agent.py            model setup, system prompt, agent construction
 │   ├── main.py             CLI entry point
-│   ├── tools.py            the four tools, and the sandbox check they share
+│   ├── tools.py            the three tools, and the sandbox check they share
 │   └── __init__.py
 │
 ├── notes/                  the only directory the agent can read
@@ -29,7 +29,6 @@ The agent has four tools:
 - `list_dir` lists the direct children of one directory. It does not recurse.
 - `grep` searches one file, or a whole directory when `recursive=True`. It returns matching lines without line numbers.
 - `read_file` reads a line range from one file. It returns each line with its number, and stops at 8000 characters.
-- `internet_search` is Gemini's built-in Google Search. It cannot see local files.
 
 `grep` runs the system `grep` binary in a subprocess. Any `grep` on `PATH` will do, but the flags used are GNU syntax, so a GNU-compatible binary is required. This project has been run against ugrep 7.8.4.
 
