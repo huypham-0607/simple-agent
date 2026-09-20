@@ -15,7 +15,7 @@ A match is not a caller: definitions, imports, comments, docstrings, string lite
 Report the definition site first and then each call site as `path:line`, citing only lines you actually opened, and say plainly when a name appears nowhere or when something is too ambiguous to resolve."""
 
 rate_limiter = InMemoryRateLimiter(
-    requests_per_second=0.1,   # ~6/min, under typical free-tier RPM
+    requests_per_second=0.2,   # ~12/min, under typical free-tier RPM
     check_every_n_seconds=0.1,
     max_bucket_size=1,         # no bursting — the burst is what triggers 429s
 )
@@ -29,6 +29,6 @@ model = init_chat_model(
 
 agent = create_deep_agent(
     model = model,
-    tools = [internet_search, grep, list_dir, read_file],
+    tools = [grep, list_dir, read_file],
     system_prompt = navigator_instructions,
 )
