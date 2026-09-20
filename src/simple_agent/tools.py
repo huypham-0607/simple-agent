@@ -11,15 +11,13 @@
 """
 
 import subprocess
-import pathlib
 
 from langchain_core.tools import tool
 from pathlib import Path, PurePosixPath
-from deepagents import create_deep_agent
 
 internet_search = {"google_search": {}}
 
-SANDBOX_ROOT = (Path(__file__).resolve().parent.parent / "notes").resolve()
+SANDBOX_ROOT = (Path(__file__).resolve().parent.parent.parent / "notes").resolve()
 BLOCKED_NAMES = {
     ".env", ".env.local", ".git", ".ssh", ".aws", ".netrc", "id_rsa", "id_ed25519"
 }
